@@ -11,6 +11,153 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			
+							* {
+				  padding: 0;
+				  margin: 0;
+				  box-sizing: border-box;
+				}
+				
+				@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
+				
+				body,
+				html {
+				  font-family: "Montserrat", sans-serif;
+				  width: 100%;
+				  height: 100%;
+				}
+				
+				.wrapper {
+				  width: 80%;
+				  height: auto;
+				  background: #fff;
+				  position: relative;
+				  margin: 0 auto;
+				  display: flex;
+				  .item {
+				    cursor: pointer;
+				    overflow: hidden;
+				    transition: all .4s ease;
+				    margin: 60px auto;
+				    border-radius: 14px;
+				    box-shadow: 0px 0px 7px 4px rgba(0, 0, 0, 0.2);
+				    width: 360px;
+				    background: #f9f9f9;
+				    position: relative;
+				    span.close{
+				      position: absolute;
+				      top: 10px;
+				      right: -35px;
+				      transition: all .4s ease;
+				      z-index: 9;
+				      font-weight: 800;
+				      &::before{
+				            content: "-";
+				    background: #fff;
+				    border-radius: 50%;
+				    padding: 0px 7px;
+				    font-weight: 300;
+				      }
+				    }
+				    .graphic {
+				      position: relative;
+				      border-top-left-radius: 14px;
+				      border-top-right-radius: 14px;
+				
+				      overflow: hidden;
+				      img {
+				        width: 100%;
+				        object-fit: cover;
+				        object-position: center;
+				        min-height: 270px;
+				      }
+				      span {
+				        position: absolute;
+				        bottom: 10px;
+				        left: 10px;
+				        font-size: 2em;
+				        color: #fff;
+				        text-transform: uppercase;
+				        font-weight: 800;
+				        max-width: 35%;
+				        line-height: 30px;
+				      }
+				    }
+				    .brief {
+				      margin-top: -4px;
+				      position: relative;
+				      display: flex;
+				      background: linear-gradient(to right, #22c1c3, #fdbb2d);
+				      padding: 10px 10px;
+				      border-bottom-left-radius: 14px;
+				      border-bottom-right-radius: 14px;
+				      .icon {
+				        width: 40px;
+				        img {
+				          object-fit: cover;
+				          width: 100%;
+				        }
+				      }
+				      .typo {
+				        margin-left: 20px;
+				        span {
+				          color: #fff;
+				          font-size: 13px;
+				          display: block;
+				          &:first-child {
+				            font-size: 15px;
+				            font-weight: 800;
+				          }
+				        }
+				      }
+				    }
+				    .sub{
+				        position: absolute;
+				        transition: all .4s ease;
+				        padding: 20px 40px;  
+				        p.header{
+				          font-size: 3em;
+				          font-weight: 800;
+				          margin-bottom: 10px;
+				        }
+				      p.story{
+				        line-height: 25px;
+				      }
+				      }
+				  }
+				}
+				
+				.item.animate {
+				  z-index: 999;
+				     width: 40%;
+				    position: fixed;
+				    left: 0;
+				    right: 0;
+				  max-height: 98%;
+				  overflow-y: scroll;
+				    /* margin-left: auto; */
+				    /* margin-right: auto; */
+				    // transform: translate(-50%, -50%);
+				  margin: auto;
+				    border-radius: 0;
+				}
+				
+				.item.animate span.close{
+				    transition-delay: 0.3s;
+				    right: 10px;
+				}
+				
+				.item.animate .sub{
+				  position: relative;
+				}
+				
+				.item.animate .graphic,
+				.item.animate .brief {
+				  border-radius: 0;
+				}
+
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -25,6 +172,45 @@
 					</ul>
 				</nav>
 			</header>
+
+		<div class="wrapper2">
+  			<div class="item"><span class="close">X</span>
+		    		<div class="graphic"><img src="https://media3.giphy.com/media/wwkGBwUOvYX283ZxVf/giphy.gif?cid=6c09b9522dlz270jn124b7z3n5xbgxscia28t3wqfjlbrww3&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Angry bird" onclick="animateCard()"/><span>Game of the year</span></div>
+    				<div class="brief">
+				<div class="icon"><img src="http://www.myiconfinder.com/uploads/iconsets/256-256-8a8001971ed7e3e34510584b1f3ce74d.png" alt=""/></div>
+      				<div class="typo"><span>iGEM 2023</span><span>Front end is such a pain</span></div>
+    				</div>
+    				<div class="sub">
+      <p class="header">Ligma</p>
+      <p class="story">Contrary to popular belief, Ligma (not to be confused with Ligma, the town) is a disease who is known to be created by the Ninja tribes of Sugondese. Sugondese was a city or town and was known for its excellent taste of nuts like tree nuts. If you turn west, you&rsquo;ll see the Ligma town. You will see that in the factories in Ligma, many factories make soccer balls.</p>
+    </div>
+  </div>
+  <div class="item"><span class="close">X
+    </span>
+    <div class="graphic"><img src="https://ezgif.com/images/fading-gif-creator-demo.gif" alt="Angry bird" onclick="animateCard()"/><span>carousel jugaad
+    </span></div>
+    <div class="brief">
+      <div class="icon"><img src="http://www.myiconfinder.com/uploads/iconsets/256-256-8a8001971ed7e3e34510584b1f3ce74d.png" alt=""/></div>
+      <div class="typo"><span>iGEM 2023</span><span>Front end is such a pain</span></div>
+    </div>
+    <div class="sub">
+      <p class="header">Ligma</p>
+      <p class="story">Contrary to popular belief, Ligma (not to be confused with Ligma, the town) is a disease who is known to be created by the Ninja tribes of Sugondese. Sugondese was a city or town and was known for its excellent taste of nuts like tree nuts. If you turn west, you&rsquo;ll see the Ligma town. You will see that in the factories in Ligma, many factories make soccer balls.</p>
+    </div>
+  </div>
+  <div class="item"><span class="close">X
+</span>
+    <div class="graphic"><img src="https://cdnb.artstation.com/p/assets/images/images/040/227/013/original/fangyu-chung-lor-twistedfate-1.gif?1628221710" alt="Angry bird" onclick="animateCard()"/><span>Game of the day</span></div>
+    <div class="brief">
+      <div class="icon"><img src="http://www.myiconfinder.com/uploads/iconsets/256-256-8a8001971ed7e3e34510584b1f3ce74d.png" alt=""/></div>
+      <div class="typo"><span>iGEM 2023</span><span>Front end is such a pain</span></div>
+    </div>
+    <div class="sub">
+      <p class="header">Ligma</p>
+      <p class="story">Contrary to popular belief, Ligma (not to be confused with Ligma, the town) is a disease who is known to be created by the Ninja tribes of Sugondese. Sugondese was a city or town and was known for its excellent taste of nuts like tree nuts. If you turn west, you&rsquo;ll see the Ligma town. You will see that in the factories in Ligma, many factories make soccer balls.</p>
+    </div>
+  </div>
+</div>
 
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -58,6 +244,29 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				var cardsModule = (function() {
+				  var trigger = $(".item"),
+				    closetrigger = $(".item span.close");
+				
+				  var animateCard = function() {
+				    $(this).addClass("animate");
+				  };
+				
+				  var closeCard = function(e) {
+				    console.log($(this)
+				      .parent())
+				    $(this)
+				      .parent()
+				      .removeClass("animate");
+				    e.stopPropagation();
+				  };
+				
+				  trigger.on("click", animateCard);
+				  closetrigger.on("click", closeCard);
+				  
+				})();
+			</script>
 
 	</body>
 </html>
