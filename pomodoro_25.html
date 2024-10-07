@@ -1,0 +1,119 @@
+<!-- Display the countdown timer in an element -->
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DIY POMODORO</title>
+</head>
+
+<style>
+p{
+  text-align: center;
+  font-size: 60px;
+  
+}
+.body{
+  background-image: url('images/tomat2.png');/*<------- BG image URL goes here ******************************* */
+  background-size: cover;
+  color:white;
+}
+.header{
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 1px 1px 0 #000, 1px 1px 0 #000, 1px 1px 0 #000, 1px 1px 0 #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 8vh;
+  margin-top: 250px;
+}
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-250%);
+  transform: translateX(250%);
+}
+.demo{
+  font-size: 50px;
+}
+.marquee{
+  font-size:20px;
+  text-align: center  ;
+}
+</style>
+
+<body class="body">
+
+<p class="header">DIY POMODORO TIMER</p>
+<div class="vertical-center">
+  <button onclick="pomodoro()" style="font-size:15px;">The Start Button</button>
+</div>
+<p id="demo"></p>
+
+<p class="marquee" id="song-title">
+  <label for="music">Pick a tune:</label>
+  <select id="song_pick" name="songs">
+    <!-- THE OPTIONS FOR SONGS GO HERE -->
+    <option value="assets/music/M.O.O.N - Dust (Synthwave).mp3" data-title = "e">M.O.O.N - Dust (Synthwave)</option>
+    <option value="assets/music/A Team of Misfits.mp3" data-title="a">A Team of Misfits | League of ungentlemanly warfare </option>
+    <option value="assets/music/The Martian - Making Water.mp3" data-title = "b">Making Water | The Martian</option>
+    <option value="assets/music/coulou's cafe trumpet meditations (no. 9).mp3" data-title= "c">Coulou's cafe trumpet meditations nº 9</option>
+    <option value="assets/music/Lofi critical roll Mighty Vibes Vol 2 Chill Tunes to StudyTranscribe Magic To.mp3" data-title = "d">Mighty Vibes | Chill tunes to transcribe magic to</option>
+    <option value="assets/music/Sorcerer Cory Wong.mp3" data-title = "d">The Sorcerer | Cory Wong</option>
+    <option value="assets/music/His Name Is Napoleon Solo.mp3" data-title = "d">His Name is Napoleon Solo | Man from UNCLE ost</option>
+    <option value="assets/music/Lindsey Stirling - Boulevard of Broken Dreams (Green Day Cover).mp3" data-title = "d">Boulevard of Broken Dreams | Lindsey Stirling cover</option>
+    <option value="assets/music/Cory Wong 305.mp3" data-title = "d">305 | Cory Wong</option>
+    <!-- <option value="assets/music/Cory Wong 305.mp3" data-title = "d">305 | Cory Wong</option> -->
+  </select>
+</p>
+<div style="text-align:right;">
+  <form id="duration">
+    <input type="radio" id="work" name="duration" value="25" checked=true><label for="html">work</label><br>
+    <input type="radio" id="rest" name="duration" value="5"><label for="css">rest</label>
+  </form>
+</div>
+
+<script>
+function pomodoro(){
+	var song_pick = document.getElementById("song_pick").value;
+    var song1 = new Audio();
+    song1.src = song_pick;
+    song1.loop = true;
+    song1.volume = .25; // setting the volume to 25% because the sound is loud
+    song1.play();
+
+  var duration = parseInt(document.querySelector('input[name="duration"]:checked').value);
+  document.getElementById("demo").innerHTML = duration;
+
+	// Set the date we're counting down to
+	var countDownDate = new Date().getTime() + 1000 * 60 * duration ;
+	document.getElementById("song-title").innerHTML = "♫ " + document.getElementById("song_pick").value.split("/").slice(-1);
+
+	// Update the count down every 1 second
+	var x = setInterval(function() {
+
+	  // Get today's date and time
+	  var now = new Date().getTime();
+
+	  // Find the distance between now and the count down date
+	  var distance = countDownDate - now;
+
+	  // Time calculations for days, hours, minutes and seconds
+	  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+	  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+	  // Display the result in the element with id="demo"
+	  document.getElementById("demo").innerHTML = "Time left: " + minutes + "m " + seconds + "s ";
+
+	  // If the count down is finished, write some text
+	  if (distance < 0) {
+	    clearInterval(x);
+	    song1.pause();
+	    document.getElementById("demo").innerHTML = "POMODORO COMPLETE";
+        var music = new Audio("assets/music//doorbell.mp3");
+        music.play();
+	  }
+	}, 1000);
+}
+</script>
+</body>
+</html>
