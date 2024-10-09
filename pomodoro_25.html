@@ -4,8 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DIY POMODORO</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -22,7 +22,7 @@
         }
         
         .header {
-            font-family: 'Montserrat', serif; /* Changed to a more classic font */
+            font-family: 'Merriweather', serif;
             font-size: 60px;
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
             margin-bottom: 30px;
@@ -91,13 +91,15 @@
 
     <p class="header">DIY POMODORO TIMER</p>
     
-    <div>
+    <div id="to-hide1">
         <button onclick="pomodoro()">Start Timer</button>
     </div>
 
     <p id="demo" class="demo"></p>
+    
+    <p class="marquee"></p>
 
-    <div class="select-container">
+    <div class="select-container" id ="to-hide2">
         <label for="music">Pick a tune:</label>
         <select id="song_pick" name="songs">
             <option value="assets/music/M.O.O.N - Dust (Synthwave).mp3">M.O.O.N - Dust (Synthwave)</option>
@@ -112,28 +114,28 @@
         </select>
     </div>
 
-    <div class="duration-options">
-	    <form id="duration">
-		<input type="radio" id="work" name="duration" value="25" checked=true><label for="html">work</label><br>
-		<input type="radio" id="rest" name="duration" value="5"><label for="css">rest</label>
-	</form>
+    <div class="duration-options" id="song-title">
+        <input type="radio" id="work" name="duration" value="25" checked>
+        <label for="work">Work (25 min)</label>
+        <input type="radio" id="rest" name="duration" value="5">
+        <label for="rest">Rest (5 min)</label>
     </div>
-    </div>
-	
+
     <script>
         function pomodoro() {
             var song_pick = document.getElementById("song_pick").value;
-            var song1 = new Audio();
-            song1.src = song_pick;
+            var song1 = new Audio(song_pick); // Initialize audio with the selected song
             song1.loop = true;
-            song1.volume = .25; // setting the volume to 25%
+            song1.volume = 0.25; // setting the volume to 25%
             song1.play();
 
             var duration = parseInt(document.querySelector('input[name="duration"]:checked').value);
-            document.getElementById("demo").innerHTML = duration;
+            document.getElementById("demo").innerHTML = "Duration: " + duration + " min";
 
             var countDownDate = new Date().getTime() + 1000 * 60 * duration;
-            document.getElementById("song-title").innerHTML = "♫ " + document.getElementById("song_pick").value.split("/").slice(-1);
+            document.getElementById("song-title").innerHTML = "♫ Now playing: " + song_pick.split("/").pop(); // Update song title
+            document.getElementById("to-hide1").innerHTML = "";
+            document.getElementById("to-hide2").innerHTML = "";
 
             var x = setInterval(function() {
                 var now = new Date().getTime();
@@ -143,6 +145,7 @@
                 var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
                 document.getElementById("demo").innerHTML = "Time left: " + minutes + "m " + seconds + "s ";
+                
 
                 if (distance < 0) {
                     clearInterval(x);
