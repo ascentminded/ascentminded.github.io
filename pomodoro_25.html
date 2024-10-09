@@ -115,6 +115,12 @@
     </div>
 
     <script>
+        hr = new Date().getHours()
+        if (hr>=5 && hr<19){
+        document.body.style.backgroundImage = "url('tomat2.png')";//Daytime
+      }else{
+        document.body.style.backgroundImage = "url('tomato.png')";//Nighttime
+      }
         function pomodoro() {
             var song_pick = document.getElementById("song_pick").value;
             var song1 = new Audio(song_pick); // Initialize audio with the selected song
