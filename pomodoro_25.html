@@ -7,120 +7,74 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <style>
-        body {
-            margin: 0;
-            font-family: 'Roboto', sans-serif;
-            background-image: url('images/tomat2.png');
-            background-size: cover;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-        }
-        
-        .header {
-            font-family: 'Montserrat', sans-serif; /* Changed to a more modern font */
-            font-size: 60px;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-            margin-bottom: 30px;
-        }
+p{
+  text-align: center;
+  font-size: 60px;
+  
+}
+.body{
+  background-image: url('images/tomat2.png');/*<------- BG image URL goes here ******************************* */
+  background-size: cover;
+  color:white;
+}
+.header{
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 1px 1px 0 #000, 1px 1px 0 #000, 1px 1px 0 #000, 1px 1px 0 #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 8vh;
+  margin-top: 250px;
+}
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-250%);
+  transform: translateX(250%);
+}
+.demo{
+  font-size: 50px;
+}
+.marquee{
+  font-size:20px;
+  text-align: center  ;
+}
+</style>
 
-        .demo {
-            font-size: 50px;
-            margin: 20px 0;
-        }
+<body class="body">
 
-        .marquee {
-            font-size: 20px;
-            margin: 20px 0;
-        }
+<p class="header">DIY POMODORO TIMER</p>
+<div class="vertical-center">
+  <button onclick="pomodoro()" style="font-size:15px;">The Start Button</button>
+</div>
+<p id="demo"></p>
 
-        button {
-            padding: 15px 30px;
-            font-size: 20px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            border-radius: 5px;
-            margin: 10px;
-        }
+<p class="marquee" id="song-title">
+  <label for="music">Pick a tune:</label>
+	<select id="song_pick" name="songs">
+<!-- THE OPTIONS FOR SONGS GO HERE -->
+	<option value="assets/music/M.O.O.N - Dust (Synthwave).mp3">M.O.O.N - Dust (Synthwave)</option>
+	<option value="assets/music/A Team of Misfits.mp3">A Team of Misfits | League of ungentlemanly warfare</option>
+	<option value="assets/music/Arziyan from Delhi 6 by Javed Ali, Kailash K.mp3">Arziyan | Delhi 6</option>
+	<option value="assets/music/coulou's cafe trumpet meditations (no. 9).mp3">Coulou's cafe trumpet meditations nº 9</option>
+	<option value="assets/music/Lofi critical roll Mighty Vibes Vol 2 Chill Tunes to StudyTranscribe Magic To.mp3">Mighty Vibes | Chill tunes to transcribe magic to</option>
+	<option value="assets/music/Sorcerer Cory Wong.mp3">The Sorcerer | Cory Wong</option>
+	<option value="assets/music/His Name Is Napoleon Solo.mp3">His Name is Napoleon Solo | Man from UNCLE ost</option>
+	<option value="assets/music/Lindsey Stirling - Boulevard of Broken Dreams (Green Day Cover).mp3">Boulevard of Broken Dreams | Lindsey Stirling cover</option>
+	<option value="assets/music/Cory Wong 305.mp3">305 | Cory Wong</option>
 
-        button:hover {
-            background-color: rgba(255, 255, 255, 0.5);
-        }
+  </select>
+</p>
+<div style="text-align:right;">
+  <form id="duration">
+    <input type="radio" id="work" name="duration" value="25" checked=true><label for="html">work</label><br>
+    <input type="radio" id="rest" name="duration" value="5"><label for="css">rest</label>
+  </form>
+</div>
 
-        .select-container {
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .duration-options {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .duration-options label {
-            padding: 10px 20px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .duration-options input {
-            display: none; /* Hide the radio buttons */
-        }
-
-        .duration-options input:checked + label {
-            background-color: rgba(255, 255, 255, 0.5);
-        }
-    </style>
-</head>
-
-<body>
-
-    <p class="header">DIY POMODORO TIMER</p>
-    
-    <div id="click_here">
-        <button onclick="pomodoro()">Start Timer</button>
-    </div>
-
-    <p id="demo" class="demo"></p>
-
-    <div class="select-container">
-        <label for="music">Pick a tune:</label>
-        <select id="song_pick" name="songs">
-            <option value="assets/music/M.O.O.N - Dust (Synthwave).mp3">M.O.O.N - Dust (Synthwave)</option>
-            <option value="assets/music/A Team of Misfits.mp3">A Team of Misfits | League of ungentlemanly warfare</option>
-            <option value="assets/music/Arziyan from Delhi 6 by Javed Ali, Kailash K.mp3">Arziyan | Delhi 6</option>
-            <option value="assets/music/coulou's cafe trumpet meditations (no. 9).mp3">Coulou's cafe trumpet meditations nº 9</option>
-            <option value="assets/music/Lofi critical roll Mighty Vibes Vol 2 Chill Tunes to StudyTranscribe Magic To.mp3">Mighty Vibes | Chill tunes to transcribe magic to</option>
-            <option value="assets/music/Sorcerer Cory Wong.mp3">The Sorcerer | Cory Wong</option>
-            <option value="assets/music/His Name Is Napoleon Solo.mp3">His Name is Napoleon Solo | Man from UNCLE ost</option>
-            <option value="assets/music/Lindsey Stirling - Boulevard of Broken Dreams (Green Day Cover).mp3">Boulevard of Broken Dreams | Lindsey Stirling cover</option>
-            <option value="assets/music/Cory Wong 305.mp3">305 | Cory Wong</option>
-        </select>
-    </div>
-
-    <div class="duration-options" id ="duration">>
-        <input type="radio" id="work" name="duration" value="25" checked>
-        <label for="work">Work (25 min)</label>
-        <input type="radio" id="rest" name="duration" value="5">
-        <label for="rest">Rest (5 min)</label>
-    </div>
-
-    <script>
-        function pomodoro(){
+<script>
+function pomodoro(){
 	var song_pick = document.getElementById("song_pick").value;
     var song1 = new Audio();
     song1.src = song_pick;
@@ -129,7 +83,7 @@
     song1.play();
 
   var duration = parseInt(document.querySelector('input[name="duration"]:checked').value);
-  document.getElementById("click_here").innerHTML = duration + "minutes";
+  document.getElementById("demo").innerHTML = duration;
 
 	// Set the date we're counting down to
 	var countDownDate = new Date().getTime() + 1000 * 60 * duration ;
@@ -160,7 +114,7 @@
         music.play();
 	  }
 	}, 1000);
-        }
-    </script>
+}
+</script>
 </body>
 </html>
