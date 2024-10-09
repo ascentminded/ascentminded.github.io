@@ -3,8 +3,9 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DIY POMODORO</title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -21,7 +22,7 @@
         }
         
         .header {
-            font-family: 'Georgia', serif; /* Changed to a more classic font */
+            font-family: 'Montserrat', serif; /* Changed to a more classic font */
             font-size: 60px;
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
             margin-bottom: 30px;
@@ -111,17 +112,11 @@
         </select>
     </div>
 
-    <div class="duration-options" id="duration">
+    <div class="duration-options">
         <input type="radio" id="work" name="duration" value="25" checked>
         <label for="work">Work (25 min)</label>
         <input type="radio" id="rest" name="duration" value="5">
         <label for="rest">Rest (5 min)</label>
-    </div>
-    <div style="text-align:right;">
-  	<form id="duration">
-    	<input type="radio" id="work" name="duration" value="25" checked=true><label for="html">work</label><br>
-    	<input type="radio" id="rest" name="duration" value="5"><label for="css">rest</label>
-  	</form>
     </div>
 	
     <script>
