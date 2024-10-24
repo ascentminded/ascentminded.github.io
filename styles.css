@@ -43,7 +43,7 @@ a{
     text-align: center;
     width: 95%; /* Fixed width of 75% of the screen */
     max-width: 800px; /* Optional: set a maximum width for larger screens */
-    margin: 100px 0; /* Centered vertically */
+    margin: 50px 0; /* Centered vertically */
 }
 
 h1 {
