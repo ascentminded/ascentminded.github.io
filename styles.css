@@ -12,6 +12,8 @@ body {
 }
 
 header {
+    position: fixed;
+    color: white;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -30,6 +32,10 @@ nav a {
     margin-left: 20px;
 }
 
+a{
+    color:black;
+}
+
 .text-box {
     background-color: rgba(255, 255, 255, 0.1); /* Light background for contrast */
     padding: 40px;
@@ -37,13 +43,16 @@ nav a {
     text-align: center;
     width: 95%; /* Fixed width of 75% of the screen */
     max-width: 800px; /* Optional: set a maximum width for larger screens */
-    margin: 50px 0; /* Centered vertically */
+    margin: 100px 0; /* Centered vertically */
 }
 
 h1 {
     font-family: 'Playfair Display', serif; /* Changed to Playfair Display */
     margin: 0; /* Remove default margin */
     font-size: 24px; /* Adjusted font size */
+}
+p{
+    font-family: 'Helvetica', sans-serif;
 }
 
 @media (max-width: 600px) {
