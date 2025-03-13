@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap'); /* Importing Playfair Display font */
 
 body {
-    background-color: white;/*A navy blue */
+    background-color: #000435;/*A navy blue */
     color: black;
     font-family: 'Playfair Display', serif; /* Updated to Playfair Display */
     margin: 0;
