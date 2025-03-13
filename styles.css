@@ -2,10 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap'); /* Importing Playfair Display font */
 
 body {
-    background-color: #3C2A1D; /* Slightly darker brown */
-    color: white;
+    background-color: #000435;/*;#3C2A1D; /* Slightly darker brown */
+    color: black;
     font-family: 'Playfair Display', serif; /* Updated to Playfair Display */
     margin: 0;
+    line-height: 1.6;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,12 +15,16 @@ body {
 header {
     position: fixed;
     color: white;
+    top:0;
+	background-color: #000435;
     width: 100%;
     display: flex;
     justify-content: space-between;
     padding: 20px;
     box-sizing: border-box; /* Ensures padding is included in the width */
+	
 }
+
 
 nav {
     display: flex; /* Ensure nav items are in a row */
@@ -32,12 +37,12 @@ nav a {
     margin-left: 20px;
 }
 
-a {
-    color: white;
+a{
+    color:black;
 }
 
 .text-box {
-    background-color: rgba(255, 255, 255, 0.1); /* Light background for contrast */
+    background-color: white;/*rgba(215, 181, 154, 0.9); Light background for contrast */
     padding: 40px;
     border-radius: 8px;
     text-align: center;
@@ -51,8 +56,9 @@ h1 {
     margin: 0; /* Remove default margin */
     font-size: 24px; /* Adjusted font size */
 }
-p{
-    font-family: 'Helvetica', sans-serif;
+
+p {
+   font-family: 'Helvetica', sans-serif;
 }
 
 @media (max-width: 600px) {
