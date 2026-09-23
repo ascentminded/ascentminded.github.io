@@ -14,11 +14,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600&display=swap" rel="stylesheet" />
 <title>TRACKR</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'" />
   <script>
     // apply theme before paint to avoid flash
     (function () {
       try {
+        var allowed = { silver: 1, terminal: 1, tron: 1 };
         var t = localStorage.getItem("trackr_theme") || "silver";
+        if (!allowed[t]) t = "silver";
         document.documentElement.setAttribute("data-theme", t);
         if (localStorage.getItem("trackr_ambient") === "0") {
           document.documentElement.classList.add("ambient-off");
@@ -1272,11 +1275,11 @@ input[type="number"] {
           .join(" · ");
         const actions = allowEdit
           ? `<div class="entry-actions">
-               <button type="button" class="edit" data-edit="${e.id}">Edit</button>
-               <button type="button" class="kill" data-del="${e.id}">Delete</button>
+               <button type="button" class="edit" data-edit="${escapeAttr(e.id)}">Edit</button>
+               <button type="button" class="kill" data-del="${escapeAttr(e.id)}">Delete</button>
              </div>`
-          : `<button type="button" class="kill" data-del="${e.id}">Delete</button>`;
-        return `<article class="entry" data-id="${e.id}">
+          : `<button type="button" class="kill" data-del="${escapeAttr(e.id)}">Delete</button>`;
+        return `<article class="entry" data-id="${escapeAttr(e.id)}">
           <div class="top"><span>${escapeHtml(e.project)}</span><span>${formatHours(e.hours)}</span></div>
           ${when ? `<div class="meta">${escapeHtml(when)}</div>` : ""}
           ${e.notes ? `<div class="note">${escapeHtml(e.notes)}</div>` : ""}
@@ -1546,8 +1549,11 @@ input[type="number"] {
     return lines.join("\n");
   }
   function csvEscape(s) {
-    if (/[",\n]/.test(s)) return `"${s.replace(/"/g, '""')}"`;
-    return s;
+    let out = String(s ?? "");
+    // Prevent CSV/Excel formula injection (=, +, -, @, tab, CR)
+    if (/^[=+\-@\t\r]/.test(out)) out = "'" + out;
+    if (/[",\n]/.test(out)) return `"${out.replace(/"/g, '""')}"`;
+    return out;
   }
   function parseCsv(text) {
     const rows = [];
@@ -1610,25 +1616,33 @@ input[type="number"] {
       return;
     }
     let n = 0;
+    const MAX_IMPORT = 5000;
     for (const r of rows.slice(1)) {
+      if (n >= MAX_IMPORT) break;
       if (!r.length || r.every((c) => !c)) continue;
       const hours = parseHours(r[idx.hours]);
-      const project = (r[idx.project] || "").trim().toUpperCase();
+      const project = (r[idx.project] || "").trim().toUpperCase().slice(0, 120);
       const date = (r[idx.date] || "").trim();
-      if (!date || !project || !Number.isFinite(hours) || hours <= 0) continue;
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) continue;
+      if (!project || !Number.isFinite(hours) || hours <= 0 || hours > 24 * 14) continue;
+      const notes = idx.notes >= 0 ? String(r[idx.notes] || "").slice(0, 2000) : "";
+      const from = idx.from >= 0 ? String(r[idx.from] || "").slice(0, 8) : "";
+      const to = idx.to >= 0 ? String(r[idx.to] || "").slice(0, 8) : "";
       entries.push({
         id: uid(),
         date,
         hours: Math.round(hours * 60) / 60,
         project,
-        notes: idx.notes >= 0 ? (r[idx.notes] || "") : "",
-        from: idx.from >= 0 ? (r[idx.from] || "") : "",
-        to: idx.to >= 0 ? (r[idx.to] || "") : "",
+        notes,
+        from,
+        to,
       });
       n++;
     }
     save();
-    $("exportFlash").textContent = `Imported ${n} rows`;
+    $("exportFlash").textContent = n >= MAX_IMPORT
+      ? `Imported ${n} rows (cap ${MAX_IMPORT})`
+      : `Imported ${n} rows`;
     ev.target.value = "";
     renderToday();
   });
@@ -1660,3 +1674,4 @@ input[type="number"] {
 </script>
 </body>
 </html>
+
