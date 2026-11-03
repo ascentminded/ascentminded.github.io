@@ -1,0 +1,73 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap'); /* Importing Playfair Display font */
+
+body {
+    background-color: #000435;/*A navy blue */
+    color: black;
+    font-family: 'Playfair Display', serif; /* Updated to Playfair Display */
+    margin: 0;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    background-color: #000435;/*A navy blue */
+    position: fixed;
+    color: white;
+    top:0;
+	background-color: #000435;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box; /* Ensures padding is included in the width */
+	
+}
+
+
+nav {
+    display: flex; /* Ensure nav items are in a row */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px; /* Smaller text for links */
+    margin-left: 20px;
+}
+
+a{
+    color:black;
+}
+
+.text-box {
+    background-color: white;/*rgba(215, 181, 154, 0.9); Light background for contrast */
+    padding: 40px;
+    border-radius: 8px;
+    text-align: center;
+    width: 95%; /* Fixed width of 75% of the screen */
+    max-width: 800px; /* Optional: set a maximum width for larger screens */
+    margin: 50px 0; /* Centered vertically */
+}
+
+h1 {
+    font-family: 'Playfair Display', serif; /* Changed to Playfair Display */
+    margin: 0; /* Remove default margin */
+    font-size: 24px; /* Adjusted font size */
+}
+
+p {
+   font-family: 'Helvetica', sans-serif;
+}
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    nav {
+        margin-top: 10px;
+    }
+}

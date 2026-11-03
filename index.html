@@ -1,30 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="images/icon.png">
-    <title>NB</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080B12">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <title>NB</title>
 </head>
 <body>
-    <header>
-        <h1>NB</h1> <!-- Website name -->
-        <nav>
-            <a href="index.html"><b>Home</b></a>
-            <a href="work.htm">Work</a>
-            <a href="contact.htm">Contact</a>
-            <a href="misc.htm">Misc</a>
-        </nav>
-    </header>
-    <main>
-        
-        <div class="text-box">
-            <h2>Welcome to NB's homepage</h2>
-            <img src="images/Lab-idle1.gif" alt="idle gif" style="width: 95%; max-width: 800px;margin: 0;">
-            <p><i>Art by yours truly</i></p>
-		<p>A cognitive scientist and data science enthusiast. This website lets me show off some projects that I've done on the side. Head over to the <a href="work.htm">Work</a> page to see more</p>
-        </div>
-    </main>
+  <header class="site-header">
+    <a class="wordmark" href="index.html" aria-label="NB home">NB</a>
+    <nav aria-label="Main navigation">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="work.htm">Projects</a>
+      <a href="misc.htm">Misc</a>
+    </nav>
+  </header>
+
+  <main class="site-main home-main">
+    <section class="home-hero">
+      <div class="hero-copy">
+        <p class="eyebrow">COGNITIVE SCIENCE / DATA SCIENCE</p>
+        <h1>Welcome to NB's homepage</h1>
+        <p class="hero-description">A cognitive scientist and data science enthusiast. This website lets me show off some projects that I've done on the side. Head over to the <a href="work.htm">Projects</a> page to see more.</p>
+        <p class="archive-note">To check out the hand-crafted version of this website (circa 2025), <a href="old_index.html">click here</a>.</p>
+      </div>
+      <figure class="hero-art">
+        <img class="misc-link" data-description="pixel art animation done in libresprite || shoutout OSS" src="images/Lab-idle1.gif" alt="Lab illustration">
+        <figcaption id="misc-description"><i>Art by yours truly</i></figcaption>
+      </figure>
+    </section>
+    <footer class="page-footer"><span>NB</span><span>Built with HTML &amp; CSS</span></footer>
+  </main>
+
+  <script>
+    const description = document.getElementById('misc-description');
+    const defaultDescription = description.textContent;
+    const links = document.querySelectorAll('.misc-link[data-description]');
+
+    function showDescription(text) {
+      if (description.textContent === text) return;
+      description.classList.add('is-changing');
+      window.setTimeout(() => {
+        description.textContent = text;
+        description.classList.remove('is-changing');
+      }, 120);
+    }
+
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => showDescription(link.dataset.description));
+      link.addEventListener('focus', () => showDescription(link.dataset.description));
+      link.addEventListener('mouseleave', () => {
+        if (!link.matches(':focus')) showDescription(defaultDescription);
+      });
+      link.addEventListener('blur', () => showDescription(defaultDescription));
+    });
+  </script>
 </body>
 </html>

@@ -1,0 +1,101 @@
+[
+  {
+    "category": "DATA SCIENCE",
+    "title": "Exploring open source biomedical data",
+    "link": "https://github.com/ascentminded/research-q-loop",
+    "link_label": "GitHub",
+    "paragraphs": [
+      "There's no better way for me to improve at being a scientist than to take a new dataset and go through the research loop :",
+      "<b>explore > hypothesize > test > interpret > refine my research q and repeat<b>.",
+      "That's what I did here in bite-sized chunks, starting with causal inference and the ACTG dataset"
+    ],
+    "image": "images/trtben.jpg",
+    "alt": "An animated plot"
+  },
+  {
+    "category": "COMPUTATIONAL NEUROSCIENCE",
+    "title": "Hierarchical Microcircuits",
+    "link": "https://github.com/ascentminded/pred-brain",
+    "link_label": "GitHub",
+    "paragraphs": [
+      "Built a model in vanilla python, simulating the interactions of Pyramidal neurons, PV, VIP and SST interneurons. This let me explore how sensory uncertainty and prediction error work together to influence belief updation."
+    ],
+    "image": "images/Microcircuit.jpg",
+    "alt": "A simplified representation of the microcircuit"
+  },
+  {
+    "category": "AI / MACHINE LEARNING",
+    "title": "Agentic AI",
+    "link": "https://github.com/ascentminded/llama-agent",
+    "link_label": "GitHub",
+    "paragraphs": [
+      "OpenAI's API has a lot of features that make building agentic AI easy. LLaMa is free and open source, but lacks some ease of use. So these notebooks let you format your outputs and chain prompts more easily in LLaMa.",
+      "I also built multiple agentic AI using Gemini, from a 'cognitive companion' that quickly summarises text and rephrases it into exercise questions, to a vacancy scraper that leverages AI's ability to work with fuzzy logic to scrape job postings from major websites and compile the ones that fit you.",
+      "<i>Not letting AI generate any text after I saw the wave of slop that's invaded the internet</i>"
+    ],
+    "inline_links": [
+      {
+        "text": "'cognitive companion'",
+        "url": "https://github.com/ascentminded/cognitive-companion"
+      },
+      {
+        "text": "a vacancy scraper",
+        "url": "https://github.com/ascentminded/PhD-vacancy-agent"
+      }
+    ]
+  },
+  {
+    "category": "AI / MACHINE LEARNING",
+    "title": "SmaLLM",
+    "link": "https://github.com/ascentminded/SmaLLM",
+    "link_label": "GitHub",
+    "paragraphs": [
+      "Built a transformer model, with multi-headed self-attention blocks, feed-forward connections and fully connected layers, effectively building a miniature GPT.",
+      "<i>The output (after training on shakespeare's works) works if you squint</i>"
+    ],
+    "image": "images/shakespeare.PNG",
+    "alt": "Output from the Shakespeare-trained model"
+  },
+  {
+    "category": "DATA SCIENCE",
+    "title": "Movebank <i>Larus fuscus</i> dataset",
+    "link": "https://colab.research.google.com/drive/1zd7ev34s_kazXE4h5U5uupVDGnlU2iAm?usp=sharing",
+    "link_label": "Colab",
+    "paragraphs": [
+      "Got to work on a Movebank dataset detailing the migration of the Lesser black-backed gull. General data analysis and visualisation, as well as using clustering to identify some hotspots frequented by these gulls.",
+      "<i>Plots by yours truly</i>"
+    ],
+    "image": "images/3brownmap.gif",
+    "alt": "Migration map"
+  },
+  {
+    "category": "WEB / DESIGN",
+    "title": "This very website",
+    "paragraphs": [
+      "This website is built entirely on HTML and CSS, avoiding the slowing down that comes with JS-heavy webpages. I've also implemented some pre-loading, so that subpages are partly loaded when you hover over the link.",
+      "<i>It also keeps me minimalistic, and innovative</i>"
+    ]
+  },
+  {
+    "category": "SCIENTIFIC TOOLING",
+    "title": "ImageJ fluorescent image processing macro",
+    "link": "https://github.com/ascentminded/Fluorescent_Image_Macro",
+    "link_label": "GitHub",
+    "paragraphs": [
+      "Built several imagej macros that help automate the very tedious process of splitting fluorescent microscope images into channels and saving each one as a distinct file. Especially considering the sheer number of images that build up. Luckily, these macros don't even render each image, saving device RAM and completely processing a folder of images in minutes and one file (see video) in seconds.",
+      "<i>All hail open source</i>"
+    ],
+    "video": "images/Macro video.mp4",
+    "alt": "ImageJ macro at work"
+  },
+  {
+    "category": "NEUROFEEDBACK",
+    "title": "Neurofeedback game to help you relax",
+    "paragraphs": [
+      "Built a game using Pygame, combined it with Timeflux to read the strength of alpha-band brain waves coming from an EEG device. The game incentivised relaxation, slowing down the in-game character and giving more points the longer you maintained a relaxed, alpha heavy state.",
+      "<i>Cat art from Pusheen Corp</i>"
+    ],
+    "image": "images/eegcat.gif",
+    "alt": "Neurofeedback game"
+  }
+]

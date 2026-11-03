@@ -1,34 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS -->
-    <link rel="icon" type="image/png" href="images/icon.png">
-    <title>Other - NB</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080B12">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <title>Misc - NB</title>
 </head>
 <body>
-    <header>
-        <h1>NB</h1> <!-- Website name -->
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="work.htm">Work</a>
-            <a href="contact.htm">Contact</a>
-            <a href="misc.htm"><b>Misc</b></a>
-        </nav>
-    </header>
-    <main>
-        <div class="text-box">
-            <h2>Other Projects!</h2>
-            <div class="contact-options">
-                <a href="http://github.com/ascentminded/" class="box" style="display: inline-block; text-align: center; margin-right: 20px; text-decoration: none;">
-                    <div style="font-size: 48px; border: 2px solid; padding: 20px; border-radius: 8px;">
-                        g<br> <!-- Line break to place "Mail" below "M" -->
-                        <span style="font-size: 16px;">Github</span> <!-- Caption for mail -->
-                    </div>
-                </a>
-            </div>
-        </div>
-    </main>
+  <header class="site-header">
+    <a class="wordmark" href="index.html" aria-label="NB home">NB</a>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="work.htm">Projects</a>
+      <a href="misc.htm" aria-current="page">Misc</a>
+    </nav>
+  </header>
+
+  <main class="site-main misc-main">
+    <section class="page-intro">
+      <p class="eyebrow">ELSEWHERE ON THE INTERNET</p>
+      <h1>Misc</h1>
+      <p class="intro-copy misc-description" id="misc-description" aria-live="polite">Contact Me!</p>
+    </section>
+
+    <section class="misc-links" aria-label="Contact and other links">
+      <a class="misc-link" href="mailto:naveen19@alumni.iisertvm.ac.in" data-description="You know what to do">
+        <span class="misc-symbol">✉</span>
+        <span>Mail</span>
+      </a>
+      <a class="misc-link" href="https://medium.com/@naveen_b" data-description="A burst of motivation during the pandemic, maybe I'll get back to writing there soon" target="_blank" rel="noopener noreferrer">
+        <span class="misc-symbol">m.</span>
+        <span>medium</span>
+      </a>
+      <a class="misc-link" href="https://github.com/ascentminded" data-description="Where I store most of the repos. My non-work repos are a little sparse, but bear with me" target="_blank" rel="noopener noreferrer">
+        <span class="misc-symbol misc-github">GH</span>
+        <span>GitHub</span>
+      </a>
+    </section>
+
+    <footer class="page-footer"><span>NB</span><span>Built with HTML &amp; CSS</span></footer>
+  </main>
+
+  <script>
+    const description = document.getElementById('misc-description');
+    const defaultDescription = description.textContent;
+    const links = document.querySelectorAll('.misc-link[data-description]');
+
+    function showDescription(text) {
+      if (description.textContent === text) return;
+      description.classList.add('is-changing');
+      window.setTimeout(() => {
+        description.textContent = text;
+        description.classList.remove('is-changing');
+      }, 120);
+    }
+
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => showDescription(link.dataset.description));
+      link.addEventListener('focus', () => showDescription(link.dataset.description));
+      link.addEventListener('mouseleave', () => {
+        if (!link.matches(':focus')) showDescription(defaultDescription);
+      });
+      link.addEventListener('blur', () => showDescription(defaultDescription));
+    });
+  </script>
+
 </body>
 </html>
